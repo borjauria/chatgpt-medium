@@ -1,5 +1,7 @@
 <h1>SQL Chatbot using GPT-based Language Model</h1>
 
+![openai_shot](https://github.com/borjauria/chatgpt-medium/assets/45542785/69b1355e-8f91-4644-8573-729cddac59e5)
+
 <h3>Overview:</h3>
 <p>The SQL Chatbot project is an innovative application that harnesses the power of the GPT-based language model to assist users with SQL-related queries. This specialized chatbot is tailored to understand, interpret, and respond to questions pertaining exclusively to SQL, serving both as a learning aid and a troubleshooting assistant.</p>
 
