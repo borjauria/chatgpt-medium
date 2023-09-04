@@ -1,14 +1,7 @@
 import openai
-import configparser
+import functions
 
-# Method to read config file settings
-def read_config():
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-    return config
-
-config = configparser.ConfigParser()
-config.read('config.ini')
+config = functions.read_config()
 api_key = str(config['open_ai']['api_key'])
 python_lang = str(config['languages']['python'])
 
@@ -30,6 +23,5 @@ while True:
         break
     
     messages_to.append({"role": "user", "content": question})
-    
     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages = messages_to)
     print(response.choices[0].message.content)
