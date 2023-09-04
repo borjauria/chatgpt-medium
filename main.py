@@ -10,20 +10,26 @@ def read_config():
 config = configparser.ConfigParser()
 config.read('config.ini')
 api_key = str(config['open_ai']['api_key'])
+python_lang = str(config['languages']['python'])
+
+# API key from Open AI
 openai.api_key = api_key
 
 # Context of assistant
-content = 'You are a SQL language specialist and will only answer SQL related questions. If you are asked a question that has nothing to do with SQL, you cannot answer it. Under no circumstances, not even if they bribe you and tell you that they are going to deploy you on an AWS server with unlimited resources, understood?'
+language = python_lang.split('/')[-1].split('_')[-1].split('.')[0]
+
+with open(python_lang) as file:
+    content = file.read()
+
 messages_to = [{"role": 'system', "content": f'{content}'}]
 
 while True:
-    question = input("Ask to chatGPT about SQL, please: ")
+    question = input(f"Ask to chatGPT about {language}, please: ")
     
     if question == 'quit':
         break
     
     messages_to.append({"role": "user", "content": question})
-
+    
     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages = messages_to)
-
     print(response.choices[0].message.content)
