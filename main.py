@@ -1,7 +1,9 @@
 import openai
 import functions
 
+# Load config parameters from a config file
 config = functions.read_config()
+
 api_key = str(config['open_ai']['api_key'])
 python_lang = str(config['languages']['python'])
 
