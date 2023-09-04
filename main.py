@@ -23,6 +23,5 @@ while True:
         break
     
     messages_to.append({"role": "user", "content": question})
-    
     response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages = messages_to)
     print(response.choices[0].message.content)
