@@ -5,15 +5,15 @@ import functions
 config = functions.read_config()
 
 api_key = str(config['open_ai']['api_key'])
-python_lang = str(config['languages']['python'])
+lang = str(config['languages']['git'])
 
 # API key from Open AI
 openai.api_key = api_key
 
 # Context of assistant
-language = python_lang.split('/')[-1].split('_')[-1].split('.')[0]
+language = lang.split('/')[-1].split('_')[-1].split('.')[0]
 
-with open(python_lang) as file:
+with open(lang) as file:
     content = file.read()
 
 messages_to = [{"role": 'system', "content": f'{content}'}]
